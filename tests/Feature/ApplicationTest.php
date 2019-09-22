@@ -8,7 +8,7 @@ use Tests\TestCase;
 class ApplicationTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Test total video size endpoint.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class ApplicationTest extends TestCase
     }
 
     /**
-     * A basic test example.
+     * Test get video metadata endpoint.
      *
      * @return void
      */
@@ -56,7 +56,7 @@ class ApplicationTest extends TestCase
     }
 
     /**
-     * A basic test example.
+     * Test update video endpoint.
      *
      * @return void
      */

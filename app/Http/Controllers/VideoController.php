@@ -23,15 +23,20 @@ class VideoController extends Controller
      */
     public function getMetadata(Request $request)
     {
-        $video = Video::find($request->video_id);
-        if (!$video) {
+        $validator = Validator::make($request->all(), [
+            'video_id'  => 'required|exists:videos,id'
+        ]);
+
+        if ($validator->fails()) {
             return response([
-                'status' => false,
-                'message' => 'Invalid video id',
-                'data'  => []
-            ], 400);
+                'status'    => false,
+                'message'   => 'Invalid request.',
+                'data'      => [],
+                'errors'    => $validator->errors()
+            ]);
         }
 
+        $video = Video::find($request->video_id);
         $data = $this->service->getMetadata($video);
 
         return response([
